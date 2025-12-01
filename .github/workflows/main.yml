@@ -1,5 +1,5 @@
 .github/workflows/main.yml
-name: Python CI
+name: Node.js CI
 
 on:
   push:
@@ -9,18 +9,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v3
       with:
-        python-version: '3.11'
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-        pip install pytest
-    - name: Run tests
-      run: pytest
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm test
