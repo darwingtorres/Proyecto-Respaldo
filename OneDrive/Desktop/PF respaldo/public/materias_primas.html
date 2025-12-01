@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Materias Primas - Flor del Trigo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    // Verificación de sesión al cargar la página
+    if (sessionStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = 'index.html';
+    }
+</script>
+</head>
+<body>
+    <header>
+        <h1>Flor del Trigo <span>STOPA Lite</span></h1> 
+    </header>
+
+    <main style="max-width: 800px; margin: 30px auto; padding: 20px;">
+        <main style="max-width: 800px; margin: 30px auto; padding: 20px;">
+    <a href="index.html" class="btn btn-back" style="text-decoration: none; padding: 8px 15px; background-color: #f0f0f0; color: #333; border: 1px solid #ccc; display: inline-block; margin-bottom: 20px;">
+        Regresar al Menú Principal
+    </a>
+   
+    </main>
+        <h2>Gestión de Materias Primas</h2>
+
+        <form id="form-materia-prima">
+            <h3>Registrar Nuevo Insumo</h3>
+            
+            <label for="nombre">Nombre:</label><input type="text" id="nombre" required><br>
+            
+            <label for="lote_proveedor">Lote Proveedor:</label><input type="text" id="lote_proveedor"><br>
+            
+            <label for="fecha_caducidad">Fecha Caducidad:</label><input type="date" id="fecha_caducidad"><br>
+            
+            <label for="cantidad_stock">Stock Inicial:</label><input type="number" id="cantidad_stock" required><br>
+            
+            <button type="submit" class="btn btn-green">Guardar Insumo</button>
+            <p id="mensaje-feedback"></p>
+        </form>
+
+        <h3>Inventario Actual</h3>
+        <table>
+            <thead>
+                <tr><th>ID</th><th>Nombre</th><th>Lote Proveedor</th><th>Caducidad</th><th>Stock</th></tr>
+            </thead>
+            <tbody id="inventario-list">
+                </tbody>
+        </table>
+    </main>
+    
+    <script src="js/materias.js"></script>
+</body>
+</html>

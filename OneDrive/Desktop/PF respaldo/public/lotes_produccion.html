@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Lotes - Flor del Trigo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    // Verificación sesión al cargar la página
+    if (sessionStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = 'index.html';
+    }
+</script>cl
+</head>
+<body>
+    <header>
+        <h1>Flor del Trigo <span>STOPA Lite</span></h1> 
+    </header>
+
+    <main style="max-width: 900px; margin: 30px auto; padding: 20px;">
+        <main style="max-width: 900px; margin: 30px auto; padding: 20px;">
+    <a href="index.html" class="btn btn-back" style="text-decoration: none; padding: 8px 15px; background-color: #f0f0f0; color: #333; border: 1px solid #ccc; display: inline-block; margin-bottom: 20px;">
+        Regresar al Menú Principal
+    </a>
+    </main>
+        <h2>Registro y Control de Lotes</h2>
+
+       <form id="form-lote-produccion">
+            <h3>Registrar Lote Producido</h3>
+            
+            <label for="nombre_producto">Nombre del Producto:</label><input type="text" id="nombre_producto" required><br>
+            
+            <label for="fecha_produccion">Fecha de Producción:</label><input type="date" id="fecha_produccion" required><br>
+            
+            <label for="cantidad_producida">Cantidad Producida (Unidades):</label><input type="number" id="cantidad_producida" required><br>
+            
+            <div class="insumos-section" style="border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+                <h4>Materias Primas Utilizadas</h4>
+                
+                <div id="insumos-list">
+                    <p>Cargando materias primas...</p>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-green">Registrar Lote</button>
+            <p id="mensaje-feedback-lote"></p>
+        </form>
+        <h3>Historial de Lotes</h3>
+        <table>
+            <thead>
+                <tr><th>ID Lote</th><th>Producto</th><th>Cantidad</th><th>Fecha Producción</th></tr>
+            </thead>
+            <tbody id="lotes-list">
+                </tbody>
+        </table>
+    </main>
+    
+    <script src="js/lotes.js"></script>
+</body>
+</html>

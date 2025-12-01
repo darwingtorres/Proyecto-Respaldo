@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal - Flor del Trigo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        // Verificación simple de sesión
+        if (sessionStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'index.html'; // Si no está logueado, redirige
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.jpg" alt="Logo Flor del Trigo" class="logo">
+            <h1>Flor del Trigo <span>STOPA Lite</span></h1> 
+        </div>
+    </header>
+
+    <main>
+        <div style="max-width: 600px; margin: 30px auto; padding: 20px;">
+            <h2 id="welcome-message">Bienvenido al Sistema</h2>
+            
+            <div style="border: 1px solid var(--color-border); padding: 20px; border-radius: 8px; margin-top: 20px;">
+                <h3>Módulos del Sistema</h3>
+                <ul>
+                    <li>
+                        <a href="materias_primas.html">Gestión de Materias Primas e Inventario</a>
+                    </li>
+                    <li>
+                        <a href="lotes_produccion.html">Registro y Descuento de Lotes de Producción</a>
+                    </li>
+                </ul>
+            </div>
+            <button onclick="logout()" class="btn-logout" style="margin-top: 30px;">Cerrar Sesión</button>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('welcome-message').textContent = 
+            `Bienvenido, ${sessionStorage.getItem('user') || 'Usuario'}!`;
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
